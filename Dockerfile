@@ -1,5 +1,5 @@
 #образ maven для сборки проекта
-FROM maven:3.2 as build
+FROM maven:3.9.4 as build
 #собираем проект в рабочую директорию
 WORKDIR /app
 COPY pom.xml /app
@@ -8,7 +8,7 @@ COPY . /app
 RUN mvn clean
 RUN mvn package
 
-#образ jdk21 для запуска собранного jar файла
-FROM openjdk:21
+#образ jdk11 для запуска собранного jar файла
+FROM openjdk:11
 COPY --from=build /app/target/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
