@@ -8,7 +8,7 @@ COPY . /app
 RUN mvn clean
 RUN mvn package
 
-#образ jdk11 для запуска собранного jar файла
+#образ jdk21 для запуска собранного jar файла
 FROM openjdk:21
 COPY --from=build /app/target/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
