@@ -1,5 +1,5 @@
 #образ maven для сборки проекта
-FROM maven:3.9.4 as build
+FROM maven:3.9.7 as build
 #собираем проект в рабочую директорию
 WORKDIR /app
 COPY pom.xml /app
